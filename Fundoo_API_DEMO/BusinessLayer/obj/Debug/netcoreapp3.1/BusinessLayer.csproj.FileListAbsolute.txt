@@ -1,0 +1,17 @@
+C:\Users\HP\source\repos\Fundoo_API_DEMO\BusinessLayer\obj\Debug\netcoreapp3.1\BusinessLayer.csprojAssemblyReference.cache
+C:\Users\HP\source\repos\Fundoo_API_DEMO\BusinessLayer\obj\Debug\netcoreapp3.1\BusinessLayer.AssemblyInfoInputs.cache
+C:\Users\HP\source\repos\Fundoo_API_DEMO\BusinessLayer\obj\Debug\netcoreapp3.1\BusinessLayer.AssemblyInfo.cs
+C:\Users\HP\source\repos\Fundoo_API_DEMO\BusinessLayer\bin\Debug\netcoreapp3.1\BusinessLayer.deps.json
+C:\Users\HP\source\repos\Fundoo_API_DEMO\BusinessLayer\bin\Debug\netcoreapp3.1\BusinessLayer.dll
+C:\Users\HP\source\repos\Fundoo_API_DEMO\BusinessLayer\bin\Debug\netcoreapp3.1\BusinessLayer.pdb
+C:\Users\HP\source\repos\Fundoo_API_DEMO\BusinessLayer\bin\Debug\netcoreapp3.1\CommonLayer.dll
+C:\Users\HP\source\repos\Fundoo_API_DEMO\BusinessLayer\bin\Debug\netcoreapp3.1\RepositoryLayer.dll
+C:\Users\HP\source\repos\Fundoo_API_DEMO\BusinessLayer\bin\Debug\netcoreapp3.1\RepositoryLayer.pdb
+C:\Users\HP\source\repos\Fundoo_API_DEMO\BusinessLayer\bin\Debug\netcoreapp3.1\CommonLayer.pdb
+C:\Users\HP\source\repos\Fundoo_API_DEMO\BusinessLayer\obj\Debug\netcoreapp3.1\BusinessLayer.csproj.CoreCompileInputs.cache
+C:\Users\HP\source\repos\Fundoo_API_DEMO\BusinessLayer\obj\Debug\netcoreapp3.1\BusinessLayer.csproj.CopyComplete
+C:\Users\HP\source\repos\Fundoo_API_DEMO\BusinessLayer\obj\Debug\netcoreapp3.1\BusinessLayer.dll
+C:\Users\HP\source\repos\Fundoo_API_DEMO\BusinessLayer\obj\Debug\netcoreapp3.1\BusinessLayer.pdb
+C:\Users\HP\source\repos\Fundoo_API_DEMO\BusinessLayer\bin\Debug\netcoreapp3.1\BusinessLayer.runtimeconfig.json
+C:\Users\HP\source\repos\Fundoo_API_DEMO\BusinessLayer\bin\Debug\netcoreapp3.1\BusinessLayer.runtimeconfig.dev.json
+C:\Users\HP\source\repos\Fundoo_API_DEMO\BusinessLayer\obj\Debug\netcoreapp3.1\BusinessLayer.genruntimeconfig.cache
