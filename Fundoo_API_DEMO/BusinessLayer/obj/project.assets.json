@@ -6258,11 +6258,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\HP\\source\\repos\\Fundoo_API_DEMO\\BusinessLayer\\BusinessLayer.csproj",
+      "projectUniqueName": "C:\\Users\\HP\\source\\repos\\FundooAPI\\Fundoo_API_DEMO\\BusinessLayer\\BusinessLayer.csproj",
       "projectName": "BusinessLayer",
-      "projectPath": "C:\\Users\\HP\\source\\repos\\Fundoo_API_DEMO\\BusinessLayer\\BusinessLayer.csproj",
+      "projectPath": "C:\\Users\\HP\\source\\repos\\FundooAPI\\Fundoo_API_DEMO\\BusinessLayer\\BusinessLayer.csproj",
       "packagesPath": "C:\\Users\\HP\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\HP\\source\\repos\\Fundoo_API_DEMO\\BusinessLayer\\obj\\",
+      "outputPath": "C:\\Users\\HP\\source\\repos\\FundooAPI\\Fundoo_API_DEMO\\BusinessLayer\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\HP\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -6279,8 +6279,8 @@
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
           "projectReferences": {
-            "C:\\Users\\HP\\source\\repos\\Fundoo_API_DEMO\\RepositoryLayer\\RepositoryLayer.csproj": {
-              "projectPath": "C:\\Users\\HP\\source\\repos\\Fundoo_API_DEMO\\RepositoryLayer\\RepositoryLayer.csproj"
+            "C:\\Users\\HP\\source\\repos\\FundooAPI\\Fundoo_API_DEMO\\RepositoryLayer\\RepositoryLayer.csproj": {
+              "projectPath": "C:\\Users\\HP\\source\\repos\\FundooAPI\\Fundoo_API_DEMO\\RepositoryLayer\\RepositoryLayer.csproj"
             }
           }
         }

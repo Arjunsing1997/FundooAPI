@@ -1,30 +1,29 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using CommonLayer;
 
 namespace RepositoryLayer
 {
     public class UserRL : IUserRL
     {
-        FundooContext fundooContext;
 
-        public UserRL(FundooContext fundooContext)
+        private FundooContext _userDbContext;
+        public UserRL(FundooContext userDbContext)
         {
-            this.fundooContext = fundooContext;
+            _userDbContext = userDbContext;
+        }
+        public User AddUser(User newuser)
+        {
+            _userDbContext.Users.Add(newuser);
+            _userDbContext.SaveChanges();
+            return newuser;
         }
 
-        public User RegisterUser(User user)
+        public IEnumerable<User> UserDetails()
         {
-            try
-            {
-                fundooContext.Users.Add(user);
-                fundooContext.SaveChanges();
-                return user;
-            }
-            catch(Exception e)
-            {
-                throw new Exception(e.Message);
-            }
-
+            var Details = _userDbContext.Users.ToList();
+            return Details;
         }
     }
 }

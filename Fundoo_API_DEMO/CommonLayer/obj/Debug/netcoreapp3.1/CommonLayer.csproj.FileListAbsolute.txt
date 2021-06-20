@@ -10,3 +10,15 @@ C:\Users\HP\source\repos\Fundoo_API_DEMO\CommonLayer\obj\Debug\netcoreapp3.1\Com
 C:\Users\HP\source\repos\Fundoo_API_DEMO\CommonLayer\bin\Debug\netcoreapp3.1\CommonLayer.runtimeconfig.json
 C:\Users\HP\source\repos\Fundoo_API_DEMO\CommonLayer\bin\Debug\netcoreapp3.1\CommonLayer.runtimeconfig.dev.json
 C:\Users\HP\source\repos\Fundoo_API_DEMO\CommonLayer\obj\Debug\netcoreapp3.1\CommonLayer.genruntimeconfig.cache
+C:\Users\HP\source\repos\FundooAPI\Fundoo_API_DEMO\CommonLayer\bin\Debug\netcoreapp3.1\CommonLayer.deps.json
+C:\Users\HP\source\repos\FundooAPI\Fundoo_API_DEMO\CommonLayer\bin\Debug\netcoreapp3.1\CommonLayer.runtimeconfig.json
+C:\Users\HP\source\repos\FundooAPI\Fundoo_API_DEMO\CommonLayer\bin\Debug\netcoreapp3.1\CommonLayer.runtimeconfig.dev.json
+C:\Users\HP\source\repos\FundooAPI\Fundoo_API_DEMO\CommonLayer\bin\Debug\netcoreapp3.1\CommonLayer.dll
+C:\Users\HP\source\repos\FundooAPI\Fundoo_API_DEMO\CommonLayer\bin\Debug\netcoreapp3.1\CommonLayer.pdb
+C:\Users\HP\source\repos\FundooAPI\Fundoo_API_DEMO\CommonLayer\obj\Debug\netcoreapp3.1\CommonLayer.csprojAssemblyReference.cache
+C:\Users\HP\source\repos\FundooAPI\Fundoo_API_DEMO\CommonLayer\obj\Debug\netcoreapp3.1\CommonLayer.AssemblyInfoInputs.cache
+C:\Users\HP\source\repos\FundooAPI\Fundoo_API_DEMO\CommonLayer\obj\Debug\netcoreapp3.1\CommonLayer.AssemblyInfo.cs
+C:\Users\HP\source\repos\FundooAPI\Fundoo_API_DEMO\CommonLayer\obj\Debug\netcoreapp3.1\CommonLayer.csproj.CoreCompileInputs.cache
+C:\Users\HP\source\repos\FundooAPI\Fundoo_API_DEMO\CommonLayer\obj\Debug\netcoreapp3.1\CommonLayer.dll
+C:\Users\HP\source\repos\FundooAPI\Fundoo_API_DEMO\CommonLayer\obj\Debug\netcoreapp3.1\CommonLayer.pdb
+C:\Users\HP\source\repos\FundooAPI\Fundoo_API_DEMO\CommonLayer\obj\Debug\netcoreapp3.1\CommonLayer.genruntimeconfig.cache

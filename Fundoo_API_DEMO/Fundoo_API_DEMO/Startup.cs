@@ -29,13 +29,10 @@ namespace Fundoo_API_DEMO
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<FundooContext>(opts =>
-                                               opts.UseSqlServer(Configuration["ConnectionStrings:FundooDB"]));
+            services.AddDbContext<FundooContext>(opts => opts.UseSqlServer(Configuration["ConnectionStrings:FundooDB"]));
             services.AddControllers();
-
-            services.AddScoped<IUserBL, UserBL>();
             services.AddTransient<IUserBL, UserBL>();
-           // services.AddTransient<IUserRL, UserRL>();
+            services.AddTransient<IUserRL, UserRL>();
 
 
             services.AddSwaggerGen();

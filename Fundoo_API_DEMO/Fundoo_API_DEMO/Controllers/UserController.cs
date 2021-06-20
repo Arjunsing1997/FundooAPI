@@ -13,18 +13,31 @@ namespace Fundoo_API_DEMO.Controllers
     [ApiController]
     public class UserController : ControllerBase
     {
-        IUserBL userBL;
-
-        public UserController(IUserBL userBL)
+        IUserBL userBl;
+        public UserController(IUserBL userBl)
         {
-            this.userBL = userBL;
+            this.userBl = userBl;
+        }
+        [HttpPost]
+        public ActionResult AddUser(User user)
+        {
+            try
+            {
+                this.userBl.AddUser(user);
+                return this.Ok(new { success = true, message = "Registration Successful " });
+            }
+
+            catch (Exception e)
+            {
+                return this.BadRequest(new { success = false, message = e.Message });
+            }
         }
 
-        [HttpPost]
-       
-        public User RegisterUser(User user)
+        [HttpGet]
+
+        public IEnumerable<User> UserDetails()
         {
-            return userBL.RegisterUser(user);
+            return userBl.UserDetails();
         }
     }
 }

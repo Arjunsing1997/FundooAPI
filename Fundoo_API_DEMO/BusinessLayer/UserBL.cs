@@ -1,28 +1,29 @@
 ﻿using System;
+using System.Collections.Generic;
 using CommonLayer;
-
+using RepositoryLayer;
 
 namespace BusinessLayer
 {
     public class UserBL : IUserBL
     {
-        IUserBL userBL;
+        IUserRL userRl;
 
-        public UserBL(IUserBL userBL)
+        public UserBL(IUserRL userRl)
         {
-            this.userBL = userBL;
+            this.userRl = userRl;
         }
 
-        public User RegisterUser(User user)
+        public User AddUser(User user)
         {
-            try
-            {
-               return this.userBL.RegisterUser(user);
-            }
-            catch(Exception e)
-            {
-                throw new Exception(e.Message);
-            }
+            this.userRl.AddUser(user);
+            return user;
+        }
+
+        public IEnumerable<User> UserDetails()
+        {
+            var Details = this.userRl.UserDetails();
+            return Details;
         }
     }
 }

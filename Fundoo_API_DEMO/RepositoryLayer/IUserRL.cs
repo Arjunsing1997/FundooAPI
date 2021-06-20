@@ -7,7 +7,7 @@ namespace RepositoryLayer
 {
     public interface IUserRL
     {
-        User RegisterUser(User newUser);
-
+        User AddUser(User user);
+        IEnumerable<User> UserDetails();
     }
 }
