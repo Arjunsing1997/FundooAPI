@@ -26,15 +26,11 @@ namespace BusinessLayer
             return Details;
         }
 
-        public bool UserAuthentication(string email, string password)
+        public string UserAuthentication(string email, string password)
         {
             try
             {
-                bool result = this.userRl.UserAuthentication(email, password);
-                if (result == true)
-                    return true;
-                else
-                    return false;
+                return this.userRl.UserAuthentication(email, password);
             }
             catch(Exception e)
             {

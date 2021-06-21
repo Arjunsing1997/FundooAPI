@@ -42,15 +42,14 @@ namespace Fundoo_API_DEMO.Controllers
 
         [HttpPost]
         [Route("Authentication")]
-        public ActionResult UserAuthentication(string email, string password)
+        public ActionResult UserAuthentication(EmailModel eModel)
         {
             try
             {
-                bool result = this.userBl.UserAuthentication(email,password);
-                if (result == true)
-                    return this.Ok(new { success = true, message = "Authentication Successful " });
-                else
-                    return this.BadRequest(new { success = false, message = "Authentication Fail!!!" });
+                var token = this.userBl.UserAuthentication(eModel.Email, eModel.Password);
+                if (token == null)
+                    return Unauthorized();
+                return this.Ok(new { token = token, success = true, message = "Token Generated Successfull" });
             }
 
             catch (Exception e)
