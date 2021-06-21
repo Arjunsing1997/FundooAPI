@@ -13,6 +13,9 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using RepositoryLayer;
 using BusinessLayer;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 namespace Fundoo_API_DEMO
 {
@@ -33,6 +36,28 @@ namespace Fundoo_API_DEMO
             services.AddControllers();
             services.AddTransient<IUserBL, UserBL>();
             services.AddTransient<IUserRL, UserRL>();
+
+           // services.AddAuthentication(options =>
+           // {
+           //     options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+           //     options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+           //     options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
+           // })
+
+           //// Adding Jwt Bearer  
+           //.AddJwtBearer(options =>
+           //{
+           //    options.SaveToken = true;
+           //    options.RequireHttpsMetadata = false;
+           //    options.TokenValidationParameters = new TokenValidationParameters()
+           //    {
+           //        ValidateIssuer = true,
+           //        ValidateAudience = true,
+           //        ValidAudience = Configuration["JWT:ValidAudience"],
+           //        ValidIssuer = Configuration["JWT:ValidIssuer"],
+           //        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["JWT:Secret"]))
+           //    };
+           //});
 
 
             services.AddSwaggerGen();
@@ -62,7 +87,7 @@ namespace Fundoo_API_DEMO
             app.UseSwagger();
             app.UseSwaggerUI(c =>
             {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "My FundooAPI");
+                c.SwaggerEndpoint("v1/swagger.json", "My FundooAPI");
             });
         }
     }

@@ -160,3 +160,4 @@ C:\Users\HP\source\repos\FundooAPI\Fundoo_API_DEMO\Fundoo_API_DEMO\obj\Debug\net
 C:\Users\HP\source\repos\FundooAPI\Fundoo_API_DEMO\Fundoo_API_DEMO\obj\Debug\netcoreapp3.1\Fundoo_API_DEMO.dll
 C:\Users\HP\source\repos\FundooAPI\Fundoo_API_DEMO\Fundoo_API_DEMO\obj\Debug\netcoreapp3.1\Fundoo_API_DEMO.pdb
 C:\Users\HP\source\repos\FundooAPI\Fundoo_API_DEMO\Fundoo_API_DEMO\obj\Debug\netcoreapp3.1\Fundoo_API_DEMO.genruntimeconfig.cache
+C:\Users\HP\source\repos\FundooAPI\Fundoo_API_DEMO\Fundoo_API_DEMO\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Authentication.JwtBearer.dll

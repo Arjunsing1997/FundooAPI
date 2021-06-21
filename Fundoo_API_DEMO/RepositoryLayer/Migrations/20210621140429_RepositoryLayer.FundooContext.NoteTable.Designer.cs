@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RepositoryLayer;
 
 namespace RepositoryLayer.Migrations
 {
     [DbContext(typeof(FundooContext))]
-    partial class FundooContextModelSnapshot : ModelSnapshot
+    [Migration("20210621140429_RepositoryLayer.FundooContext.NoteTable")]
+    partial class RepositoryLayerFundooContextNoteTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -41,12 +43,15 @@ namespace RepositoryLayer.Migrations
                     b.Property<DateTime>("Reminder")
                         .HasColumnType("datetime2");
 
-                    b.Property<long?>("UserId")
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.Property<long?>("UserId1")
                         .HasColumnType("bigint");
 
                     b.HasKey("Note_ID");
 
-                    b.HasIndex("UserId");
+                    b.HasIndex("UserId1");
 
                     b.ToTable("Notes");
                 });
@@ -79,7 +84,7 @@ namespace RepositoryLayer.Migrations
                 {
                     b.HasOne("CommonLayer.User", "User")
                         .WithMany("Note")
-                        .HasForeignKey("UserId")
+                        .HasForeignKey("UserId1")
                         .OnDelete(DeleteBehavior.Cascade);
 
                     b.Navigation("User");

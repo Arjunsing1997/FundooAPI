@@ -9,5 +9,7 @@ namespace RepositoryLayer
     {
         User AddUser(User user);
         IEnumerable<User> UserDetails();
+
+        bool UserAuthentication(string email, string password);
     }
 }

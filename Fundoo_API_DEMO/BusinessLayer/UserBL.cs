@@ -25,5 +25,22 @@ namespace BusinessLayer
             var Details = this.userRl.UserDetails();
             return Details;
         }
+
+        public bool UserAuthentication(string email, string password)
+        {
+            try
+            {
+                bool result = this.userRl.UserAuthentication(email, password);
+                if (result == true)
+                    return true;
+                else
+                    return false;
+            }
+            catch(Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+            
+        }
     }
 }

@@ -8,5 +8,7 @@ namespace BusinessLayer
         
         User AddUser(User newUser);
         IEnumerable<User> UserDetails();
+
+        bool UserAuthentication(string email, string password);
     }
 }

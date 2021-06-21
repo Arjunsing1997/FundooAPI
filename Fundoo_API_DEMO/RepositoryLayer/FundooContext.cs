@@ -9,8 +9,17 @@ namespace RepositoryLayer
         {
 
         }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Note>()
+                .HasOne(n => n.User)
+                .WithMany(m => m.Note)
+                .OnDelete(DeleteBehavior.Cascade);
+        }
 
         public DbSet<User> Users { get; set; }
+
+        public DbSet<Note> Notes { get; set; }
     }
 
 

@@ -39,5 +39,26 @@ namespace Fundoo_API_DEMO.Controllers
         {
             return userBl.UserDetails();
         }
+
+        [HttpPost]
+        [Route("Authentication")]
+        public ActionResult UserAuthentication(string email, string password)
+        {
+            try
+            {
+                bool result = this.userBl.UserAuthentication(email,password);
+                if (result == true)
+                    return this.Ok(new { success = true, message = "Authentication Successful " });
+                else
+                    return this.BadRequest(new { success = false, message = "Authentication Fail!!!" });
+            }
+
+            catch (Exception e)
+            {
+                return this.BadRequest(new { success = false, message = e.Message });
+            }
+        }
+
+
     }
 }

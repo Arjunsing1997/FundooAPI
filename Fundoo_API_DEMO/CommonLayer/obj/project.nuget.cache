@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "mRbLCFJRTtFftstmXA8U1udFZ4jXSW7nND5SW17fDl+9PUHdYV5Qj3reO9gl8IfmnDbejY/Cmizn4MUgOH5M5Q==",
+  "dgSpecHash": "uQyTVsk/jPWnULOpdASlBzv7qpe4OrUR1YlSSsFtJfK6G4LB39BkqVWqKfeKmmj3wUiDtUVf4RQEZbe6VOqiAg==",
   "success": true,
   "projectFilePath": "C:\\Users\\HP\\source\\repos\\FundooAPI\\Fundoo_API_DEMO\\CommonLayer\\CommonLayer.csproj",
   "expectedPackageFiles": [
@@ -8,6 +8,7 @@
     "C:\\Users\\HP\\.nuget\\packages\\microsoft.aspnet.webapi.client\\4.0.20710\\microsoft.aspnet.webapi.client.4.0.20710.nupkg.sha512",
     "C:\\Users\\HP\\.nuget\\packages\\microsoft.aspnet.webapi.core\\4.0.20710\\microsoft.aspnet.webapi.core.4.0.20710.nupkg.sha512",
     "C:\\Users\\HP\\.nuget\\packages\\microsoft.aspnet.webapi.webhost\\4.0.20710\\microsoft.aspnet.webapi.webhost.4.0.20710.nupkg.sha512",
+    "C:\\Users\\HP\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\3.1.0\\microsoft.aspnetcore.authentication.jwtbearer.3.1.0.nupkg.sha512",
     "C:\\Users\\HP\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
     "C:\\Users\\HP\\.nuget\\packages\\microsoft.data.sqlclient\\2.0.1\\microsoft.data.sqlclient.2.0.1.nupkg.sha512",
     "C:\\Users\\HP\\.nuget\\packages\\microsoft.data.sqlclient.sni.runtime\\2.0.1\\microsoft.data.sqlclient.sni.runtime.2.0.1.nupkg.sha512",
