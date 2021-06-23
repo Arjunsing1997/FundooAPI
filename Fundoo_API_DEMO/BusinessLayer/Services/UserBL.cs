@@ -38,5 +38,18 @@ namespace BusinessLayer
             }
             
         }
+
+        public bool ForgotPassword(string email)
+        {
+            try
+            {
+                return this.userRl.ForgotPassword(email);
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+
+        }
     }
 }

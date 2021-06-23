@@ -3,23 +3,25 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace RepositoryLayer.Migrations
 {
-    public partial class RepositoryLayerFundooContextNoteTable : Migration
+    public partial class RepositoryFundooContextUserNotes : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DeleteData(
-                table: "Users",
-                keyColumn: "UserId",
-                keyValue: 1L);
-
-            migrationBuilder.DeleteData(
-                table: "Users",
-                keyColumn: "UserId",
-                keyValue: 2L);
-
-            migrationBuilder.DropColumn(
-                name: "Phone",
-                table: "Users");
+            migrationBuilder.CreateTable(
+                name: "Users",
+                columns: table => new
+                {
+                    UserId = table.Column<long>(type: "bigint", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    FirstName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    LastName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Email = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Password = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Users", x => x.UserId);
+                });
 
             migrationBuilder.CreateTable(
                 name: "Notes",
@@ -32,24 +34,23 @@ namespace RepositoryLayer.Migrations
                     Colour = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Reminder = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Image = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    UserId = table.Column<int>(type: "int", nullable: false),
-                    UserId1 = table.Column<long>(type: "bigint", nullable: true)
+                    UserId = table.Column<long>(type: "bigint", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Notes", x => x.Note_ID);
                     table.ForeignKey(
-                        name: "FK_Notes_Users_UserId1",
-                        column: x => x.UserId1,
+                        name: "FK_Notes_Users_UserId",
+                        column: x => x.UserId,
                         principalTable: "Users",
                         principalColumn: "UserId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Notes_UserId1",
+                name: "IX_Notes_UserId",
                 table: "Notes",
-                column: "UserId1");
+                column: "UserId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -57,21 +58,8 @@ namespace RepositoryLayer.Migrations
             migrationBuilder.DropTable(
                 name: "Notes");
 
-            migrationBuilder.AddColumn<string>(
-                name: "Phone",
-                table: "Users",
-                type: "nvarchar(max)",
-                nullable: true);
-
-            migrationBuilder.InsertData(
-                table: "Users",
-                columns: new[] { "UserId", "Email", "FirstName", "LastName", "Password", "Phone" },
-                values: new object[] { 1L, "Arjun@gmail.com", "Arjun", "Raj", "Arjun@123", null });
-
-            migrationBuilder.InsertData(
-                table: "Users",
-                columns: new[] { "UserId", "Email", "FirstName", "LastName", "Password", "Phone" },
-                values: new object[] { 2L, "John@gmail.com", "John", "Mark", "john@123", null });
+            migrationBuilder.DropTable(
+                name: "Users");
         }
     }
 }

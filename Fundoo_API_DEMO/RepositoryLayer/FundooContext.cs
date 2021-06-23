@@ -11,15 +11,15 @@ namespace RepositoryLayer
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Note>()
-                .HasOne(n => n.User)
-                .WithMany(m => m.Note)
+            modelBuilder.Entity<Notes>()
+                .HasOne(n => n.user)
+                .WithMany(m => m.Notes)
                 .OnDelete(DeleteBehavior.Cascade);
         }
 
         public DbSet<User> Users { get; set; }
 
-        public DbSet<Note> Notes { get; set; }
+        public DbSet<Notes> Notes { get; set; }
     }
 
 

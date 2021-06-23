@@ -58,6 +58,21 @@ namespace Fundoo_API_DEMO.Controllers
             }
         }
 
+        [HttpPost("forgot-password")]
+        public ActionResult ForgotPassword(User user)
+        {
+            try
+            {
+                bool isExist = this.userBl.ForgotPassword(user.Email);
+                if (isExist) return Ok(new { success = true, message = $"Reset Link sent to {user.Email}" });
+                else return BadRequest(new { success = false, message = $"No user Exist with {user.Email}" });
+
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+        }
 
     }
 }

@@ -10,8 +10,8 @@ using RepositoryLayer;
 namespace RepositoryLayer.Migrations
 {
     [DbContext(typeof(FundooContext))]
-    [Migration("20210621140429_RepositoryLayer.FundooContext.NoteTable")]
-    partial class RepositoryLayerFundooContextNoteTable
+    [Migration("20210622144449_Repository.FundooContext.User.Notes")]
+    partial class RepositoryFundooContextUserNotes
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -21,7 +21,7 @@ namespace RepositoryLayer.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("ProductVersion", "5.0.2");
 
-            modelBuilder.Entity("CommonLayer.Note", b =>
+            modelBuilder.Entity("CommonLayer.Notes", b =>
                 {
                     b.Property<int>("Note_ID")
                         .ValueGeneratedOnAdd()
@@ -43,15 +43,12 @@ namespace RepositoryLayer.Migrations
                     b.Property<DateTime>("Reminder")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
-
-                    b.Property<long?>("UserId1")
+                    b.Property<long>("UserId")
                         .HasColumnType("bigint");
 
                     b.HasKey("Note_ID");
 
-                    b.HasIndex("UserId1");
+                    b.HasIndex("UserId");
 
                     b.ToTable("Notes");
                 });
@@ -80,19 +77,20 @@ namespace RepositoryLayer.Migrations
                     b.ToTable("Users");
                 });
 
-            modelBuilder.Entity("CommonLayer.Note", b =>
+            modelBuilder.Entity("CommonLayer.Notes", b =>
                 {
-                    b.HasOne("CommonLayer.User", "User")
-                        .WithMany("Note")
-                        .HasForeignKey("UserId1")
-                        .OnDelete(DeleteBehavior.Cascade);
+                    b.HasOne("CommonLayer.User", "user")
+                        .WithMany("Notes")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-                    b.Navigation("User");
+                    b.Navigation("user");
                 });
 
             modelBuilder.Entity("CommonLayer.User", b =>
                 {
-                    b.Navigation("Note");
+                    b.Navigation("Notes");
                 });
 #pragma warning restore 612, 618
         }
