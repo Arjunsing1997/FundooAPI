@@ -9,6 +9,6 @@ namespace BusinessLayer
         User AddUser(User newUser);
         IEnumerable<User> UserDetails();
         string UserAuthentication(string email, string password);
-        bool ForgotPassword(string email); //forget Password Method
+       bool ForgotPassword(string email); //forget Password Method
     }
 }

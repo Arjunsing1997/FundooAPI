@@ -1,4 +1,5 @@
 ﻿using CommonLayer;
+using CommonLayer.RequestModel;
 using RepositoryLayer.Interface;
 using System;
 using System.Collections.Generic;
@@ -9,8 +10,8 @@ namespace RepositoryLayer.Services
 {
     public class NoteRl : INoteRl
     {
-        private FundooContext _userDbContext;
-        public NoteRl(FundooContext userDbContext)
+        private FundooContext1 _userDbContext;
+        public NoteRl(FundooContext1 userDbContext)
         {
             _userDbContext = userDbContext;
         }
@@ -19,9 +20,9 @@ namespace RepositoryLayer.Services
         /// Users the details.
         /// </summary>
         /// <returns></returns>
-        public IEnumerable<User> NotesDetails()
+        public IEnumerable<Notes> NoteDetails()
         {
-            var Details = _userDbContext.Users.ToList();
+            var Details = _userDbContext.Notes.ToList();
             return Details;
         }
         /// <summary>
@@ -29,13 +30,26 @@ namespace RepositoryLayer.Services
         /// </summary>
         /// <param name="note">The note.</param>
         /// <returns></returns>
-        public void AddNotes(Notes note)
+        public void AddNote(AddNote note)
         {
             var user = _userDbContext.Users.FirstOrDefault(e => e.UserId == note.UserId);
-            note.user = user;
-            _userDbContext.Notes.Add(note);
+            if (user != null)
+            {
+                Notes db = new Notes();
+                db.Header = note.Header;
+                db.Body = note.Body;
+                db.Reminder = note.Reminder;
+                db.Colour = note.Colour;
+                db.Archieve = note.Archieve;
+                db.Trash = note.Trash;
+                db.Pin = note.Pin;
+                db.UserId = note.UserId;
+                _userDbContext.Notes.Add(db);
+                _userDbContext.SaveChanges();
+            }
+
         }
 
-        
+
     }
 }

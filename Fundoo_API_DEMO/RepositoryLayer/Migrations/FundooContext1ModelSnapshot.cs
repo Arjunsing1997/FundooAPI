@@ -3,17 +3,15 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RepositoryLayer;
 
 namespace RepositoryLayer.Migrations
 {
-    [DbContext(typeof(FundooContext))]
-    [Migration("20210622144449_Repository.FundooContext.User.Notes")]
-    partial class RepositoryFundooContextUserNotes
+    [DbContext(typeof(FundooContext1))]
+    partial class FundooContext1ModelSnapshot : ModelSnapshot
     {
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -28,6 +26,9 @@ namespace RepositoryLayer.Migrations
                         .HasColumnType("int")
                         .UseIdentityColumn();
 
+                    b.Property<string>("Archieve")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Body")
                         .HasColumnType("nvarchar(max)");
 
@@ -40,8 +41,14 @@ namespace RepositoryLayer.Migrations
                     b.Property<string>("Image")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Pin")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<DateTime>("Reminder")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("Trash")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<long>("UserId")
                         .HasColumnType("bigint");

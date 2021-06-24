@@ -4,22 +4,29 @@ using System.Collections.Generic;
 using System.Text;
 using BusinessLayer.Interface;
 using RepositoryLayer.Interface;
+using CommonLayer.RequestModel;
 
 namespace BusinessLayer.Services
 {
     public class NoteBl : INoteBl
     {
-        private INoteRl noteRl;
+        public INoteRl noteRl;
 
         public NoteBl(INoteRl noteRl)
         {
             this.noteRl = noteRl;
         }
-
-        public Notes AddUser(Notes note)
+        public IEnumerable<Notes> NoteDetails()
         {
-            this.noteRl.AddNotes(user);
-            return user;
+   
+            var Details = this.noteRl.NoteDetails();
+            return Details;
         }
+
+        public void AddNote(AddNote note)
+        {
+            this.noteRl.AddNote(note);
+        }
+
     }
 }

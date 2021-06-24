@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RepositoryLayer;
 
 namespace RepositoryLayer.Migrations
 {
-    [DbContext(typeof(FundooContext))]
-    partial class FundooContextModelSnapshot : ModelSnapshot
+    [DbContext(typeof(FundooContext1))]
+    [Migration("20210624145032_AddingAdditionColumns")]
+    partial class AddingAdditionColumns
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -19,12 +21,15 @@ namespace RepositoryLayer.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("ProductVersion", "5.0.2");
 
-            modelBuilder.Entity("CommonLayer.Note", b =>
+            modelBuilder.Entity("CommonLayer.Notes", b =>
                 {
                     b.Property<int>("Note_ID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .UseIdentityColumn();
+
+                    b.Property<string>("Archieve")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Body")
                         .HasColumnType("nvarchar(max)");
@@ -38,10 +43,16 @@ namespace RepositoryLayer.Migrations
                     b.Property<string>("Image")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Pin")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<DateTime>("Reminder")
                         .HasColumnType("datetime2");
 
-                    b.Property<long?>("UserId")
+                    b.Property<string>("Trash")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<long>("UserId")
                         .HasColumnType("bigint");
 
                     b.HasKey("Note_ID");
@@ -75,19 +86,20 @@ namespace RepositoryLayer.Migrations
                     b.ToTable("Users");
                 });
 
-            modelBuilder.Entity("CommonLayer.Note", b =>
+            modelBuilder.Entity("CommonLayer.Notes", b =>
                 {
-                    b.HasOne("CommonLayer.User", "User")
-                        .WithMany("Note")
+                    b.HasOne("CommonLayer.User", "user")
+                        .WithMany("Notes")
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-                    b.Navigation("User");
+                    b.Navigation("user");
                 });
 
             modelBuilder.Entity("CommonLayer.User", b =>
                 {
-                    b.Navigation("Note");
+                    b.Navigation("Notes");
                 });
 #pragma warning restore 612, 618
         }

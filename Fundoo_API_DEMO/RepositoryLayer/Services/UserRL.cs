@@ -1,19 +1,22 @@
 ﻿using CommonLayer;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.AspNetCore.Http;
+using RepositoryLayer.Interface;
 using System;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Security.Claims;
 using System.Text;
 using System.Collections.Generic;
+using Experimental.System.Messaging;
 
 namespace RepositoryLayer
 {
     public class UserRL : IUserRL
     {
 
-        private FundooContext _userDbContext;
-        public UserRL(FundooContext userDbContext)
+        private FundooContext1 _userDbContext;
+        public UserRL(FundooContext1 userDbContext)
         {
             _userDbContext = userDbContext;
         }
@@ -67,30 +70,30 @@ namespace RepositoryLayer
                 {
                     return false;
                 }
-                MessageQueue queue;
+                // MessageQueue queue;
 
-                ADD MESSAGE TO QUEUE
-                if (MessageQueue.Exists(@".\Private$\FundooQueue"))
-                {
-                    queue = new MessageQueue(@".\Private$\FundooQueue");
-                }
-                else
-                {
-                    queue = MessageQueue.Create(@".\Private$\FundooQueue");
-                }
+                //ADD MESSAGE TO QUEUE
+                //if (MessageQueue.Exists(@".\Private$\FundooQueue"))
+                //{
+                //    queue = new MessageQueue(@".\Private$\FundooQueue");
+                //}
+                //else
+                //{
+                //    queue = MessageQueue.Create(@".\Private$\FundooQueue");
+                //}
 
-                Message MyMessage = new Message();
-                MyMessage.Formatter = new BinaryMessageFormatter();
-                MyMessage.Body = email;
-                MyMessage.Label = "Forget Password Email";
-                queue.Send(MyMessage);
-                Message msg = queue.Receive();
-                msg.Formatter = new BinaryMessageFormatter();
+                //Message MyMessage = new Message();
+                //MyMessage.Formatter = new BinaryMessageFormatter();
+                //MyMessage.Body = email;
+                //MyMessage.Label = "Forget Password Email";
+                //queue.Send(MyMessage);
+                //Message msg = queue.Receive();
+                //msg.Formatter = new BinaryMessageFormatter();
                 EmailService.SendEmail(email, GenerateToken(email));
-                queue.ReceiveCompleted += new ReceiveCompletedEventHandler(msmqQueue_ReceiveCompleted);
+                //queue.ReceiveCompleted += new ReceiveCompletedEventHandler(msmqQueue_ReceiveCompleted);
 
-                queue.BeginReceive();
-                queue.Close();
+                //queue.BeginReceive();
+                //queue.Close();
                 return true;
 
             }

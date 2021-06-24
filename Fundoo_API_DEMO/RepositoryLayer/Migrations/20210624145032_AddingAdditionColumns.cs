@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace RepositoryLayer.Migrations
 {
-    public partial class RepositoryFundooContextUserNotes : Migration
+    public partial class AddingAdditionColumns : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -34,6 +34,9 @@ namespace RepositoryLayer.Migrations
                     Colour = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Reminder = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Image = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Archieve = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Trash = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Pin = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     UserId = table.Column<long>(type: "bigint", nullable: false)
                 },
                 constraints: table =>

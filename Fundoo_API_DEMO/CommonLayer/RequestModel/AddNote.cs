@@ -1,16 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
-namespace CommonLayer
+namespace CommonLayer.RequestModel
 {
-    public class Notes
+    public class AddNote
     {
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int Note_ID { get; set; }
         public string Header { get; set; }
         public string Body { get; set; }
         public string Colour { get; set; }
@@ -19,9 +14,6 @@ namespace CommonLayer
         public string Archieve { get; set; }
         public string Trash { get; set; }
         public string Pin { get; set; }
-
         public long UserId { get; set; }
-        public User user { get; set; }
-
     }
 }

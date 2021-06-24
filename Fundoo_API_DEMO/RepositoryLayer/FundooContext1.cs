@@ -3,9 +3,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace RepositoryLayer
 {
-    public class FundooContext : DbContext
+    public class FundooContext1 : DbContext
     {
-        public FundooContext(DbContextOptions<FundooContext> options) : base(options)
+        public FundooContext1(DbContextOptions<FundooContext1> options) : base(options)
         {
 
         }
