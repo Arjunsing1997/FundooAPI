@@ -5,6 +5,7 @@ using System.Text;
 using BusinessLayer.Interface;
 using RepositoryLayer.Interface;
 using CommonLayer.RequestModel;
+using CommonLayer.ResponseModel;
 
 namespace BusinessLayer.Services
 {
@@ -16,16 +17,21 @@ namespace BusinessLayer.Services
         {
             this.noteRl = noteRl;
         }
-        public IEnumerable<Notes> NoteDetails()
+        public List<NoteResponse> NoteDetails(long UserID)
         {
-   
-            var Details = this.noteRl.NoteDetails();
-            return Details;
+
+            return this.noteRl.NoteDetails(UserID).FindAll(e => e.UserId == UserID);
+            
         }
 
         public void AddNote(AddNote note)
         {
             this.noteRl.AddNote(note);
+        }
+
+        public void UpdateNote(Notes note)
+        {
+            this.noteRl.UpdateNote(note);
         }
 
     }

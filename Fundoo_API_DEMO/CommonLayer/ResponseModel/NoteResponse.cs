@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace CommonLayer.RequestModel
+namespace CommonLayer.ResponseModel
 {
-    public class AddNote
+    public class NoteResponse
     {
+        public int Note_ID { get; set; }
         public string Header { get; set; }
         public string Body { get; set; }
         public string Colour { get; set; }
@@ -14,6 +15,7 @@ namespace CommonLayer.RequestModel
         public string Archive { get; set; }
         public string Trash { get; set; }
         public string Pin { get; set; }
+
         public long UserId { get; set; }
     }
 }

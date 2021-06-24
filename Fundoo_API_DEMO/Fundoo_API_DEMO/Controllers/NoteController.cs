@@ -2,6 +2,8 @@
 using BusinessLayer.Interface;
 using BusinessLayer.Services;
 using CommonLayer;
+using CommonLayer.RequestModel;
+using CommonLayer.ResponseModel;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -21,12 +23,14 @@ namespace Fundoo_API_DEMO.Controllers
             this.noteBl = noteBl;
         }
         [HttpPost]
-        public ActionResult AddUser(Notes note)
+        public ActionResult AddNote(AddNote note)
         {
             try
             {
+                var userId = User.Claims.FirstOrDefault(x => x.Type.ToString().Equals("UserID", StringComparison.InvariantCultureIgnoreCase));
+                note.UserId = Int32.Parse(userId.Value);
                 this.noteBl.AddNote(note);
-                return this.Ok(new { success = true, message = "Registration Successful " });
+                return this.Ok(new { success = true, message = $"Notes Added with UserId: {note.UserId}." });
             }
 
             catch (Exception e)
@@ -37,9 +41,23 @@ namespace Fundoo_API_DEMO.Controllers
 
         [HttpGet]
 
-        public IEnumerable<Notes> UserDetails()
+        public List<NoteResponse> NoteDetails(long UserId)
         {
-            return noteBl.NoteDetails();
+            return noteBl.NoteDetails(UserId);
+        }
+
+        [HttpPut("UPDATE")]
+        public ActionResult UpdateNote(Notes note)
+        {
+            try
+            {
+                this.noteBl.UpdateNote(note);
+                return Ok(new { success = true, message = $"Note Successfully Updated" });
+            }
+            catch (Exception e)
+            {
+                return BadRequest(new { success = false, message = e.Message });
+            }
         }
     }
 }
