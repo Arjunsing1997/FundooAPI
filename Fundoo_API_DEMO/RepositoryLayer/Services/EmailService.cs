@@ -14,7 +14,7 @@ namespace RepositoryLayer
             {
                 client.EnableSsl = true;
                 client.DeliveryMethod = SmtpDeliveryMethod.Network;
-                client.UseDefaultCredentials = true;
+                client.UseDefaultCredentials = false;
                 client.Credentials = new NetworkCredential("arjundemo1997@gmail.com", "Arjun1997@");
 
                 MailMessage msgObj = new MailMessage();

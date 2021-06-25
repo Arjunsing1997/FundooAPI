@@ -66,6 +66,7 @@ namespace RepositoryLayer.Services
                 db.Pin = note.Pin;
                 db.UserId = note.UserId;
 
+                _userDbContext.Notes.Add(db);
                 _userDbContext.SaveChanges();
             }
 

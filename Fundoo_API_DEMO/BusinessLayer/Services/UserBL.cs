@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using CommonLayer;
+using CommonLayer.RequestModel;
 using RepositoryLayer;
 
 namespace BusinessLayer
@@ -14,10 +15,9 @@ namespace BusinessLayer
             this.userRl = userRl;
         }
 
-        public User AddUser(User user)
+        public void AddUser(AddUser user)
         {
             this.userRl.AddUser(user);
-            return user;
         }
 
         public IEnumerable<User> UserDetails()
@@ -50,6 +50,18 @@ namespace BusinessLayer
                 throw new Exception(e.Message);
             }
 
+        }
+
+        public void ResetPassword(string email, string newPassword)
+        {
+            try
+            {
+                this.userRl.ResetPassword(email, newPassword);
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
         }
     }
 }

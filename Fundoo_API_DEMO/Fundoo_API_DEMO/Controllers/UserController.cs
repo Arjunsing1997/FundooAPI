@@ -1,5 +1,6 @@
 ﻿using BusinessLayer;
 using CommonLayer;
+using CommonLayer.RequestModel;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -19,7 +20,7 @@ namespace Fundoo_API_DEMO.Controllers
             this.userBl = userBl;
         }
         [HttpPost]
-        public ActionResult AddUser(User user)
+        public ActionResult AddUser(AddUser user)
         {
             try
             {
@@ -58,14 +59,16 @@ namespace Fundoo_API_DEMO.Controllers
             }
         }
 
+
         [HttpPost("forgot-password")]
-        public ActionResult ForgotPassword(User user)
+        public ActionResult ForgotPassword(string Email)
         {
             try
             {
-                bool isExist = this.userBl.ForgotPassword(user.Email);
-                if (isExist) return Ok(new { success = true, message = $"Reset Link sent to {user.Email}" });
-                else return BadRequest(new { success = false, message = $"No user Exist with {user.Email}" });
+               
+                bool isExist = this.userBl.ForgotPassword(Email);
+                if (isExist) return Ok(new { success = true, message = $"Reset Link sent to {Email}" });
+                else return BadRequest(new { success = false, message = $"No user Exist with {Email}" });
 
             }
             catch (Exception e)
@@ -74,5 +77,24 @@ namespace Fundoo_API_DEMO.Controllers
             }
         }
 
+        [HttpPut("reset-password")]
+        public ActionResult ResetPassword(string newPass, string confPass)
+        {
+            try
+            {
+                if (newPass != confPass)
+                {
+                    return Ok(new { success = false, message = "New Password and Confirm Password are not equal." });
+                }
+                var UserEmailObject = User.Claims.FirstOrDefault(x => x.Type.ToString().Equals("Email", StringComparison.InvariantCultureIgnoreCase));
+                this.userBl.ResetPassword(UserEmailObject.Value, newPass);
+                //return Ok($"Updated Email: {UserEmailObject.Value} NewPassword: {user.Password}");
+                return Ok(new { success = true, message = "Password Changed Sucessfully", email = $"{UserEmailObject.Value}" });
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+        }
     }
 }

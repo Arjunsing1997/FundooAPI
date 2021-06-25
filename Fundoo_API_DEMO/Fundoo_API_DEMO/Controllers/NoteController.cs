@@ -6,9 +6,11 @@ using CommonLayer.RequestModel;
 using CommonLayer.ResponseModel;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using RepositoryLayer;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace Fundoo_API_DEMO.Controllers
@@ -18,6 +20,7 @@ namespace Fundoo_API_DEMO.Controllers
     public class NoteController : ControllerBase
     {
         INoteBl noteBl;
+        //FundooContext1 fundooContext1;
         public NoteController(INoteBl noteBl)
         {
             this.noteBl = noteBl;
@@ -27,10 +30,10 @@ namespace Fundoo_API_DEMO.Controllers
         {
             try
             {
-                var userId = User.Claims.FirstOrDefault(x => x.Type.ToString().Equals("UserID", StringComparison.InvariantCultureIgnoreCase));
-                note.UserId = Int32.Parse(userId.Value);
+                var userId = User.Claims.FirstOrDefault(x => x.Type.ToString().Equals(note.UserId));
                 this.noteBl.AddNote(note);
                 return this.Ok(new { success = true, message = $"Notes Added with UserId: {note.UserId}." });
+    
             }
 
             catch (Exception e)
