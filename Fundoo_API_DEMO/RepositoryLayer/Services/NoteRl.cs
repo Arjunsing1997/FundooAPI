@@ -72,17 +72,20 @@ namespace RepositoryLayer.Services
 
         }
 
-        public void UpdateNote(Notes note)
+        public void UpdateNote(AddNote note)
         {
-            var user = _userDbContext.Users.FirstOrDefault(e => e.UserId == note.UserId);
-            if (user != null)
+           
+            var db = _userDbContext.Notes.FirstOrDefault(e => e.UserId == note.UserId);
+            if (db != null)
             {
-                Notes db = new Notes();
-                db.Header = note.Header;
+                
+                db.Header= note.Header;
+                
                 db.Body = note.Body;
+                 
                 db.Reminder = note.Reminder;
                 db.Colour = note.Colour;
-                db.Archieve = note.Archieve;
+                db.Archieve = note.Archive;
                 db.Trash = note.Trash;
                 db.Pin = note.Pin;
                 db.UserId = note.UserId;

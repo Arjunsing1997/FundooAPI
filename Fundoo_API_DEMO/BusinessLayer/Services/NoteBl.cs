@@ -29,7 +29,7 @@ namespace BusinessLayer.Services
             this.noteRl.AddNote(note);
         }
 
-        public void UpdateNote(Notes note)
+        public void UpdateNote(AddNote note)
         {
             this.noteRl.UpdateNote(note);
         }

@@ -50,7 +50,7 @@ namespace Fundoo_API_DEMO.Controllers
         }
 
         [HttpPut("UPDATE")]
-        public ActionResult UpdateNote(Notes note)
+        public ActionResult UpdateNote(AddNote note)
         {
             try
             {

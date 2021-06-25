@@ -11,7 +11,7 @@ namespace RepositoryLayer.Interface
     {
          void AddNote(AddNote note);
         List<NoteResponse> NoteDetails(long UserId);
-        void UpdateNote(Notes note);
+        void UpdateNote(AddNote note);
 
     }
 }

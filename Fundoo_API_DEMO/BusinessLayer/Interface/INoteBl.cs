@@ -11,7 +11,6 @@ namespace BusinessLayer.Interface
     {
         List<NoteResponse> NoteDetails(long UserId);
         void AddNote(AddNote note);
-
-        void UpdateNote(Notes note);
+        void UpdateNote(AddNote note);
     }
 }
