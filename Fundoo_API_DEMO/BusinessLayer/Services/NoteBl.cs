@@ -17,10 +17,10 @@ namespace BusinessLayer.Services
         {
             this.noteRl = noteRl;
         }
-        public List<NoteResponse> NoteDetails(long UserID)
+        public List<NoteResponse> NoteDetails(int Note_ID)
         {
 
-            return this.noteRl.NoteDetails(UserID).FindAll(e => e.UserId == UserID);
+            return this.noteRl.NoteDetails(Note_ID).FindAll(e => e.Note_ID == Note_ID);
             
         }
 
@@ -29,9 +29,14 @@ namespace BusinessLayer.Services
             this.noteRl.AddNote(note);
         }
 
-        public void UpdateNote(AddNote note)
+        public void UpdateNote(NoteUpdateModel note)
         {
             this.noteRl.UpdateNote(note);
+        }
+
+        public void ColourUpdate(int Note_Id, string Colour)
+        {
+            this.noteRl.ColourUpdate(Note_Id, Colour);
         }
 
     }

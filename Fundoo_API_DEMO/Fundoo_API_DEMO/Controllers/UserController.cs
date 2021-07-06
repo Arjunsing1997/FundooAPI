@@ -7,9 +7,15 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
+using System.Security.Claims;
+using Microsoft.AspNetCore.Cors;
 
 namespace Fundoo_API_DEMO.Controllers
 {
+   
+ 
+    
     [Route("api/[controller]")]
     [ApiController]
     public class UserController : ControllerBase
@@ -19,6 +25,8 @@ namespace Fundoo_API_DEMO.Controllers
         {
             this.userBl = userBl;
         }
+
+        [AllowAnonymous]
         [HttpPost]
         public ActionResult AddUser(AddUser user)
         {
@@ -34,15 +42,18 @@ namespace Fundoo_API_DEMO.Controllers
             }
         }
 
+       
         [HttpGet]
-
         public IEnumerable<User> UserDetails()
         {
+
             return userBl.UserDetails();
         }
 
+        [AllowAnonymous]
         [HttpPost]
         [Route("Authentication")]
+       
         public ActionResult UserAuthentication(EmailModel eModel)
         {
             try
@@ -59,7 +70,7 @@ namespace Fundoo_API_DEMO.Controllers
             }
         }
 
-
+        [AllowAnonymous]
         [HttpPost("forgot-password")]
         public ActionResult ForgotPassword(string Email)
         {
@@ -77,24 +88,30 @@ namespace Fundoo_API_DEMO.Controllers
             }
         }
 
-        [HttpPut("reset-password")]
-        public ActionResult ResetPassword(string newPass, string confPass)
+        [HttpPut("Reset-Password")]
+        public ActionResult ResetPassword(string newPass, string confirmPass)
         {
             try
             {
-                if (newPass != confPass)
+                if (newPass != confirmPass)
                 {
                     return Ok(new { success = false, message = "New Password and Confirm Password are not equal." });
                 }
-                var UserEmailObject = User.Claims.FirstOrDefault(x => x.Type.ToString().Equals("Email", StringComparison.InvariantCultureIgnoreCase));
-                this.userBl.ResetPassword(UserEmailObject.Value, newPass);
+                var Claims = ClaimsPrincipal.Current.Identities.First().Claims.ToList();
+                var UserEmailObject = Claims?.FirstOrDefault(x => x.Type.Equals("Email", StringComparison.InvariantCultureIgnoreCase))?.Value;
+                this.userBl.ResetPassword(UserEmailObject, newPass);
                 //return Ok($"Updated Email: {UserEmailObject.Value} NewPassword: {user.Password}");
-                return Ok(new { success = true, message = "Password Changed Sucessfully", email = $"{UserEmailObject.Value}" });
+                return Ok(new { success = true, message = "Password Changed Sucessfully", email = $"{UserEmailObject}" });
             }
             catch (Exception e)
             {
                 throw new Exception(e.Message);
             }
         }
+
+        //var claims = ClaimsPrincipal.Current.Identities.First().Claims.ToList();
+
+        ////Filter specific claim    
+        //claims?.FirstOrDefault(x => x.Type.Equals("UserName", StringComparison.OrdinalIgnoreCase))?.Value
     }
 }

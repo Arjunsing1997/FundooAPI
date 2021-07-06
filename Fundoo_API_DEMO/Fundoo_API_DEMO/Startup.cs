@@ -26,7 +26,7 @@ namespace Fundoo_API_DEMO
 {
     public class Startup
     {
-
+        
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -47,7 +47,6 @@ namespace Fundoo_API_DEMO
             //For Note Table
             services.AddTransient<INoteBl, NoteBl>();
             services.AddTransient<INoteRl, NoteRl>();
-
 
             services.AddAuthentication(x =>
             {
@@ -95,20 +94,46 @@ namespace Fundoo_API_DEMO
 
 
             });
+
+            //Middle ware
+
+            services.AddCors();
+
+            //services.AddCors(options =>  
+            //{  
+            //options.AddDefaultPolicy(  
+            //builder =>  
+            //{  
+            //    builder.WithOrigins("https://localhost:44351", "http://localhost:4200")  
+            //                        .AllowAnyHeader()  
+            //                        .AllowAnyMethod();  
+            //});  
+   // });  
+     
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
 
             app.UseHttpsRedirection();
-
             app.UseRouting();
 
+            //Middleware 
+
+            app.UseCors(options =>
+            options.AllowAnyOrigin()
+                .AllowAnyMethod()
+                .AllowAnyHeader());
+
+            // app.UseCors();
+
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
@@ -116,6 +141,7 @@ namespace Fundoo_API_DEMO
                 endpoints.MapControllers();
             });
 
+            //Swagger Method
             app.UseSwagger();
             app.UseSwaggerUI(c =>
             {

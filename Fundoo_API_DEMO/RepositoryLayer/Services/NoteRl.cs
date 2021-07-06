@@ -21,10 +21,10 @@ namespace RepositoryLayer.Services
         /// Users the details.
         /// </summary>
         /// <returns></returns>
-        public List<NoteResponse> NoteDetails(long UserId)
+        public List<NoteResponse> NoteDetails(int Note_ID)
         {
             List<NoteResponse> response = new List<NoteResponse>();
-            var Details = _userDbContext.Notes.Where(s => s.UserId == UserId).ToList();
+            var Details = _userDbContext.Notes.Where(s => s.Note_ID == Note_ID).ToList();
             if(Details != null)
             {
                 foreach(var data in Details)
@@ -72,23 +72,29 @@ namespace RepositoryLayer.Services
 
         }
 
-        public void UpdateNote(AddNote note)
+        public void UpdateNote(NoteUpdateModel note)
         {
            
-            var db = _userDbContext.Notes.FirstOrDefault(e => e.UserId == note.UserId);
+            var db = _userDbContext.Notes.FirstOrDefault(e => e.Note_ID == note.Note_Id);
             if (db != null)
             {
                 
                 db.Header= note.Header;
-                
                 db.Body = note.Body;
-                 
                 db.Reminder = note.Reminder;
-                db.Colour = note.Colour;
                 db.Archieve = note.Archive;
                 db.Trash = note.Trash;
                 db.Pin = note.Pin;
-                db.UserId = note.UserId;
+                _userDbContext.SaveChanges();
+            }
+        }
+
+        public void ColourUpdate(int Note_Id, string colour)
+        {
+            var result = _userDbContext.Notes.FirstOrDefault(e => e.Note_ID == Note_Id);
+            if(result != null)
+            {
+                result.Colour = colour;
                 _userDbContext.SaveChanges();
             }
         }
